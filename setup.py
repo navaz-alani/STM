@@ -16,7 +16,6 @@ setup(
         'automation'
     ],
     install_requires=[
-        'os',
         'selenium',
         'webdrivermanager',
         'colorama'
