@@ -1,12 +1,44 @@
-This is the initial release of Selenium Testing Module which features a set of functions that may prove useful to improve testing experience.
+# Selenium Testing Module
 
-This release features `browser_init()`; a powerful function that automates the procedure of instantiating a WebDriver object for testing. At the moment, this function only fully works with Chromium based browsers. For other browsers, `browser_init()` will only be able to simply instantiate the WebDriver. For chromium based browsers, within one function call, the user is able to accomplish the following:
+This module contains a set of functions which automate browser initiation and prettify logging for Selenium.
 
-- Download and save the chromedriver executable (specific to your operating system)
-- Supply the testing options (e.g. `headless` or `verbose`)
-- Supply experimental options to add to the WebDriver configuration
-- Instantiate the WebDriver object
+## Motivation
 
-Along with `browser_init`, comes the `p_print()` function which can be used to prettify command line output by specifying a token and an output indent level.
+When using Selenium WebDriver to automate E2E testing, one needs a driver which Selenium can use to control the browser. In the case of Google Chrome, its the `chromedriver`.
 
-This module aims to make testing scripts easier to write (and understand) as well as make test results easier to understand to the end user.
+Getting the driver and setting it up is usually manual and is somewhat error prone.
+
+## What this module offers
+
+This module offers the `browser_init` function which can be used as follows:
+
+`browser_init : browser_name: str, ops=[], exp_ops=[], headless_download=False) -> WebDriver`
+
+Arguments:
+
+`broswer_init` takes the following arguments:
+
+- REQUIRED: `browser_name: str` - one of `"firefox", "chrome", "edge","gecko", "opera_chromium", "opera"`
+- `ops: list = []` - options such as `"headless", "verbose"`
+- `exp_ops: list = []` - experimental options
+- `headless_download: bool = False` - This is a feature which is aimed at working around the chromium sercurity feature prohibiting downloads in headless mode. Set `True` to download in `headless` mode.
+
+and returns a `WebDriver` object.
+
+Also offered is the `p_print` function which can be used to prettify command line output so that tests can be understood by the greater team.
+
+`p_print` takes in the following arguments:
+
+- REQUIRED: `s: any` - object to print
+- `n: int = 0` - This is the parameter specifying the indent level of the output
+- `toc: str = None` - Token which can be used to color the output. Use token `'info'` for yellow, `'s'` for green (success) and `'f'` for red (failure).
+
+returns `None` and outputs to `stdout`.
+
+Finally, `user_exit` is a debug function that can be used to prevent the driver from closing when the test script execution complete. It prompts the user to close the session. It should be executed as the last command in the script.
+
+`user_exit` takes in 1 argument:
+
+REQUIRED: `driver: WebDriver` - a WebDriver object
+
+returns `None` and prompts the user to exit test manually.
