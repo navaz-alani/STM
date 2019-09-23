@@ -16,7 +16,7 @@ This module offers the `browser_init` function which can be used as follows:
 
 Arguments:
 
-`broswer_init` takes the following arguments:
+`browser_init` takes the following arguments:
 
 - REQUIRED: `browser_name: str` - one of `"firefox", "chrome", "edge","gecko", "opera_chromium", "opera"`
 - `ops: list = []` - options such as `"headless", "verbose"`
