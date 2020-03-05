@@ -68,7 +68,6 @@ def p_print(s, n=0, toc=None):
         print(F.RED + "     "*n + "$ " + s + F.WHITE)
     elif toc == "info":
         print(F.YELLOW + "     "*n + "$ " + s + F.WHITE)
-    print("     "*n + "$ " + s)
 
 
 def browser_init(browser_name, ops=[], exp_ops=[], headless_download=False):
